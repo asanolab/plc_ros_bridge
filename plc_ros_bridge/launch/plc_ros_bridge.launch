@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="pub_rate"    default="10"/>
+  <arg name="config_file" default="$(find plc_ros_bridge)/config/bridge_config.yaml"/>
+  <arg name="ip"          default="192.168.0.1"/>
+  <arg name="plc_maker"   default="Keyence"/>
+
+  <node name="plc_ros_bridge" pkg="plc_ros_bridge" type="plc_ros_bridge_node.py" output="screen">
+    <param name="ip"        value="$(arg ip)"/>
+    <param name="pub_rate"  value="$(arg pub_rate)"/>
+    <param name="plc_maker" value="$(arg plc_maker)"/>
+    <rosparam command="load" file="$(arg config_file)" />
+  </node>
+</launch>

@@ -1,0 +1,17 @@
+<package format="2">
+  <name>plc_ros_bridge</name>
+  <version>1.1.0</version>
+  <description> Bridge software between ROS and PLC </description>
+
+  <maintainer email="yasano@g.ecc.u-tokyo.ac.jp">Yuki Asano</maintainer>
+  <author email="yasano@g.ecc.u-tokyo.ac.jp">Yuki Asano</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>plc_interfaces</depend>
+
+</package>

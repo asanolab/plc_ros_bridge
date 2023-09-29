@@ -1,0 +1,34 @@
+config:
+  # Subscriber:
+  # - topic_name: ROS topic name
+  # - topic_type: ROS std_msgs data type
+  # - plc_dev   : PLC device id to read/write
+  Subscribers:
+    - topic_name: 'plc_ros_bridge/write_bool'
+      topic_type: 'Bool'
+      plc_dev:    'W3000'
+
+    - topic_name: 'plc_ros_bridge/write_int16'
+      topic_type: 'Int16'
+      plc_dev:    'W3001'
+
+    - topic_name: 'plc_ros_bridge/write_int32'
+      topic_type: 'Int32'
+      plc_dev:    'W3002'
+
+  # Publisher:
+  # - topic_name: ROS topic name
+  # - topic_type: ROS std_msgs data type
+  # - plc_dev   : PLC device id to read/write
+  Publishers:
+    - topic_name: 'plc_ros_bridge/read_bool'
+      topic_type: 'Bool'
+      plc_dev:    'R3000'
+
+    - topic_name: 'plc_ros_bridge/read_int16'
+      topic_type: 'Int16'
+      plc_dev:    'R3001'
+
+    - topic_name: 'plc_ros_bridge/read_int32'
+      topic_type: 'Int32'
+      plc_dev:    'R3002'
