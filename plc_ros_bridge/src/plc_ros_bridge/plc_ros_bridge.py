@@ -45,7 +45,7 @@ class PLCROSBridge:
     # read wrapper for each PLC devices
     def read_plc(self, plc_dev, plc_data_type):
         with self.mutex:
-            if self.plc_maker == 'Keyence':
+            if self.plc_maker == 'Keyence' or 'Mitsubishi':
                 return self.pi.read_plc(plc_dev, plc_data_type)
             # other PLC's will be added here
             else:
@@ -55,7 +55,7 @@ class PLCROSBridge:
     # write wrapper for each PLC devices
     def write_plc(self, plc_dev, plc_data_type, plc_data):
         with self.mutex:
-            if self.plc_maker == 'Keyence':
+            if self.plc_maker == 'Keyence' or 'Mitsubishi':
                 return self.pi.write_plc(plc_dev, plc_data_type, plc_data)
             # other PLC's will be added here
             else:

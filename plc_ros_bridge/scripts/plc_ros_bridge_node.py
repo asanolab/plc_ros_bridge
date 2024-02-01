@@ -4,6 +4,8 @@
 import rospy
 from plc_ros_bridge.plc_ros_bridge import PLCROSBridge
 from plc_interfaces.plc_interface_keyence import PLCInterfaceKeyence
+from plc_interfaces.plc_interface_mitsubishi import PLCInterfaceMitsubishi
+
 
 def main():
     rospy.init_node('plc_ros_bridge_node', anonymous=True)
@@ -27,6 +29,8 @@ def main():
     # PLC interface
     if plc_maker == 'Keyence':
         plc_interface = PLCInterfaceKeyence()
+    elif plc_maker == 'Mitsubishi':
+        plc_interface = PLCInterfaceMitsubishi()
     # other PLC's will be added here
     else:
         rospy.logerr('%s interface has not supported yet', plc_maker)
