@@ -37,41 +37,6 @@ class PLCInterfaceMitsubishi(object):
         self.client.close()
 
 
-    # SLMP format generation
-    # SLMP伝文フォーマット (3Eフレーム = QnA互換3E方式)
-        # - 通信プロトコルのこと
-        # - データ交信
-        #  - バイナリ ->  下位バイトから上位バイトの順で送信
-        #  - ASCII    ->  上位バイトから下位バイトの順で送信
-        # - 参照
-        #   - SLMPリファレンスマニュアル
-        #   - p18 4 伝文フォーマット
-
-        # 要求伝文
-        # - sub_header_req   # サブヘッダ (5000 固定)
-        # - network_id_req   # 要求先ネットワーク番号 (自局 -> 00)
-        # - station_id_req   # 要求先局番 (自局 -> FF)
-        # - unit_io_req      # 要求先ユニットI/O番号 (CPUユニット&自局 -> 03FF固定)
-        # - multi_drop_req   # 要求先マルチドロップ局番号 (マルチドロップでない -> 00)
-        # - data_length_req  # 要求データ長 (監視タイマ+要求データのバイト数)
-        # - timer_req        # 監視タイマ (応答待ち時間. 無限待ち 0000, 0001-FFFF [250ms])
-        # [要求データ]
-        # - command_req      # コマンド 0401:一括読み出し
-        # - sub_command_req  # サブコマンド
-        # - device_id_req    # 先頭デバイス番号
-        # - device_code_req  # デバイスコード (00A8 -> データレジスタ(D))
-        # - device_num_req   # デバイス点数
-
-        # 応答伝文
-        # - sub_header_res  # サブヘッダ (D000 固定)
-        # - network_id_res  # 要求先ネットワーク番号 (要求と同様)
-        # - station_id_res  # 要求先局番 (〃)
-        # - unit_io_res     # 要求先ユニットI/O番号 (〃)
-        # - multi_drop_res  # 要求先マルチドロップ局番 (〃)
-        # - data_length_res # 応答データ長 (終了コードから応答データまでのバイト数)
-        # - end_code_res    # 終了コード
-        # - data_res        # 応答データ
-
     def make_SLMP_3E_frame_binary_common(self):
         sub_header  = b'\x50' + b'\x00'  # 5000 (固定)
         network_id  = b'\x00'            # 00 (自局)
