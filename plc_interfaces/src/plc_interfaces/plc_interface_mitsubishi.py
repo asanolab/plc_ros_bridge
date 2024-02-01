@@ -1,40 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
 import re
-import socket
 import struct
-import time
+from plc_interface_base import PLCInterfaceBase
 
 
-class PLCInterfaceMitsubishi(object):
-    def __init__(self, host='localhost', port=1025, buffer_size=1024):
-        self.host = host
-        self.port = port
-        self.client = None
-        self.buffer_size = buffer_size
-        self.connection_opened = False
-
-
-    def open(self, ip):
-        if not self.connection_opened:
-            try:
-                self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                self.client.connect((ip, self.port))
-                self.connection_opened = True
-                time.sleep(0.5)
-                print('Connected to PLC\n')
-            except Exception as e:
-                print('Connection error')
-
-
-    def is_connected(self):
-        return self.connection_opened
-
-
-    def close(self):
-        self.client.close()
+class PLCInterfaceMitsubishi(PLCInterfaceBase):
+    def __init__(self, host='192.168.0.2', port=1025, buffer_size=1024):
+        super(PLCInterfaceMitsubishi, self).__init__(host, port, buffer_size)
 
 
     def make_SLMP_3E_frame_binary_common(self):

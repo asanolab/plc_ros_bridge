@@ -30,9 +30,9 @@ class PLCROSBridge:
             return self.pi.is_connected()
 
 
-    def connect_plc(self, ip):
+    def connect_plc(self):
         with self.mutex:
-            self.pi.open(ip)
+            self.pi.open()
             return self.pi.is_connected()
 
 
@@ -101,7 +101,7 @@ class PLCROSBridge:
     def update(self, event):
         if not self.is_connected():
             rospy.loginfo("Connecting to PLC at {}".format(self.ip))
-            self.connect_plc(self.ip)
+            self.connect_plc()
             rospy.loginfo("Connected to PLC at {}".format(self.ip))
         else:
             for pub in self.publishers:

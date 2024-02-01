@@ -28,9 +28,9 @@ def main():
 
     # PLC interface
     if plc_maker == 'Keyence':
-        plc_interface = PLCInterfaceKeyence()
+        plc_interface = PLCInterfaceKeyence(ip)
     elif plc_maker == 'Mitsubishi':
-        plc_interface = PLCInterfaceMitsubishi()
+        plc_interface = PLCInterfaceMitsubishi(ip)
     # other PLC's will be added here
     else:
         rospy.logerr('%s interface has not supported yet', plc_maker)
