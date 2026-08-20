@@ -3,8 +3,8 @@
 
 import rospy
 from plc_ros_bridge.plc_ros_bridge import PLCROSBridge
-from plcpy.plc_interface_keyence import PLCInterfaceKeyence
-from plcpy.plc_interface_mitsubishi import PLCInterfaceMitsubishi
+from plc_interface.keyence import PLCInterfaceKeyence
+from plc_interface.mitsubishi import PLCInterfaceMitsubishi
 
 
 def main():

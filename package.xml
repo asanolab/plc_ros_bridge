@@ -12,6 +12,5 @@
 
   <depend>rospy</depend>
   <depend>std_msgs</depend>
-  <depend>plcpy</depend>
 
 </package>
